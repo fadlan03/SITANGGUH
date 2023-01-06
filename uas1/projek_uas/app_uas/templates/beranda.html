@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<br>
+<section id="hero" class="hero d-flex flex-column justify-content-center align-items-center" data-aos="fade" data-aos-delay="1500">
+    <div class="masthead d-flex align-items-center">
+              <div class="container px-4 px-lg-5 text-center">
+              <h2>Selamat Datang Pada Halaman Website <span>SI TANGGUH</span></h2>
+              </div>
+            </div>
+      <div class="container">
+        
+        <div class="row justify-content-center">
+          
+          <div class="col-lg-6 text-center">
+  
+          </div>
+        </div>
+      </div>
+  
+    </section><!-- End Hero Section -->
+<br>
+<center> <h1>{{nama}}</h1></center>
+<div class="col-md-12 mx-auto" id="map"></div> <br> <br>
+<h1 class="ms-5">{{judul}}</h1>
+<div class="container">
+    <table class="table mx-4">
+        <thead>
+            <tr>
+                <th scope="col">Nama Wilayah</th>
+                <th scope="col">Jumlah KK</th>
+                <th scope="col">Jumlah Pria</th>
+                <th scope="col">Jumlah Wanita</th>
+                <th scope="col">Total penduduk</th>
+            </tr>
+        </thead>
+        <tbody>
+                {% for db_penduduk in penduduk %}
+            <tr>
+                <td>{{db_penduduk.lokasi_id}}</td>
+                <td>{{db_penduduk.kk}}</td>
+                <td>{{db_penduduk.jumlah_lk}}</td>
+                <td>{{db_penduduk.jumlah_pr}}</td>
+                <td>{{db_penduduk.total}}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

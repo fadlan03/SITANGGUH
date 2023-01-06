@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<br>
+<center> <h1>{{nama}}</h1></center>
+<div class="col-md-12 mx-auto" id="map"></div> <br>
+<div class="container">
+  <center> <h1>{{judul}}</h1></center>
+  <a class="btn btn-sm-mx-3 btn-success" href= "/tambah-lokasi/"    role="button" >Tambah</a>
+<table class="table mx-4">
+    <thead>
+      <tr>
+        <th scope="col">Nama Tempat</th>
+        <th scope="col">Garis Lintang</th>
+        <th scope="col">Garis Bujur</th>
+        <th scope="col">Alamat</th>
+        <th scope="col" >Aksi</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for lokasi in denah %}
+      <tr>
+      <td>{{lokasi.nama_tempat}}</td>
+      <td>{{lokasi.garis_lintang}}</td>
+      <td>{{lokasi.garisbujur}}</td>
+      <td>{{lokasi.alamat}}</td>
+        <td>
+            <a class="btn btn-sm btn-warning" href="{% url 'u_lokasi' lokasi.id %}" role="button">Edit</a> |
+            <a class="btn btn-sm btn-danger" href= "{% url 'd_lokasi' lokasi.id %}"    role="button" >Hapus</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table></div>
+{% endblock %}

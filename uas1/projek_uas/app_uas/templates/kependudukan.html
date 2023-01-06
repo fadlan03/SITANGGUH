@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<br>
+<h1 class="ms-5">{{judul}}</h1>
+
+<a class="btn btn-sm-mx-5 btn-success" href= "/tambah-kependudukan"    role="button" >Tambah</a>
+<table class="table mx-4">
+    <thead>
+      <tr>
+        <th scope="col">Nama Wilayah</th>
+        <th scope="col">Jumlah KK</th>
+        <th scope="col">Jumlah Pria</th>
+        <th scope="col">Jumlah Wanita</th>
+        <th scope="col">Total penduduk</th>
+        <th scope="col" >Aksi</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for db_penduduk in penduduk %}
+        <tr>
+        <td>{{db_penduduk.lokasi_id}}</td>
+        <td>{{db_penduduk.kk}}</td>
+        <td>{{db_penduduk.jumlah_lk}}</td>
+        <td>{{db_penduduk.jumlah_pr}}</td>
+        <td>{{db_penduduk.total}}</td>
+        <td>
+            <a class="btn btn-sm btn-warning" href="{% url 'u_kependudukan' db_penduduk.id %}" role="button">Edit</a> |
+            <a class="btn btn-sm btn-danger" href= "{% url 'd_kependudukan' db_penduduk.id %}"    role="button" >Hapus</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% endblock %}

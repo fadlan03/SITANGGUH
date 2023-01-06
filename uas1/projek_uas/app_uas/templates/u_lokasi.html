@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<br>
+<div class="container">
+<div class="row">
+    <div class="col md-6">
+        {% if pesan %}
+        <div class="alert alert-success">
+            {{ pesan }}
+        </div>
+
+        {% endif %}
+<form action="{% url 'u_lokasi' Jurnal.id %}" method="post">
+   {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Simpan" class="btn btn-success mt-3">
+    <a href="/kelurahan/" class="btn btn-warning mt-3">Kembali</a>
+</form>
+</div>
+</div>
+</div><br><br><br>
+{% endblock %}
